@@ -38,15 +38,15 @@ int main()
         close(pipefds[1]); //Cerramos la pipa
         exit(0);
     }
-        else        /* parent : receives message from child */
+        else        /* Padre : recibe mensaje del hijo */
     {
-        /* close unused end of pipe */
-        /* because this process only needs to read */
+        /* Cerramos el segmento de la pila que no se usa*/
+        /* Ya que este proceso solo se encarga de leer */
         close(pipefds[1]);
 
-        /* read from the pipe */
+        /* Leemos de la pipa */
                 read(pipefds[0], instring, 10);
-        cout << "Just received a message that says: " << instring << endl;
+        cout << "Recibi el mensaje: " << instring << endl;
 
         close(pipefds[0]);
         exit(0);
